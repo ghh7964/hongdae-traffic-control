@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Runtime evaluation artifacts are reproducible and must not be committed.
+results/*
+!results/.gitignore

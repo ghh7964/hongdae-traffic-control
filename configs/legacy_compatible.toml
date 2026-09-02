@@ -1,0 +1,28 @@
+mode = "legacy_compatible"
+
+[paths]
+network = "legacy/sim_data/hongdae.net.xml"
+route_template = "legacy/sim_data/hongdae.rou.xml"
+asset_manifest = "configs/assets_manifest.json"
+results_dir = "results"
+
+[simulation]
+tls_id = "2959081059"
+horizon_seconds = 500
+demand_end_seconds = 400
+vehicle_period_seconds = 3.5
+delta_time = 5
+min_green = 15
+yellow_time = 2
+max_green = 50
+enforce_max_green = false
+time_to_teleport = 300
+sumo_seed_mode = "random"
+
+[demand]
+generator = "sample_legacy_routes"
+include_pedestrians = false
+
+[fixed_time]
+source = "network_nominal_durations"
+

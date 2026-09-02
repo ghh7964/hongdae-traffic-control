@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "vehicle_only_20_paired_seeds",
+  "purpose": "Predefined corrected-baseline validation set; includes the original 3-seed gate",
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505,
+    606,
+    707,
+    808,
+    909,
+    1010,
+    1111,
+    1212,
+    1313,
+    1414,
+    1515,
+    1616,
+    1717,
+    1818,
+    1919,
+    2020
+  ]
+}
