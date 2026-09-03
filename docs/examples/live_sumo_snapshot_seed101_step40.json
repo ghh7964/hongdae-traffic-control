@@ -1,0 +1,109 @@
+{
+  "diagnostics": {
+    "arrived": 3,
+    "departed": 12,
+    "missing_fields": [],
+    "teleport": 0,
+    "throughput": 3,
+    "unsupported_fields": []
+  },
+  "intersections": [
+    {
+      "confidence": 1.0,
+      "intersection_id": "legacy_gate",
+      "lanes": [
+        {
+          "approach_id": "northeast",
+          "confidence": 1.0,
+          "density": 0.0,
+          "downstream_occupancy": 0.0,
+          "halting_count": 0,
+          "lane_id": "-218976037#0_0",
+          "max_wait_seconds": 0.0,
+          "mean_speed": null,
+          "queue_ratio": 0.0,
+          "vehicle_count": 0
+        },
+        {
+          "approach_id": "northeast",
+          "confidence": 1.0,
+          "density": 0.0,
+          "downstream_occupancy": 0.0,
+          "halting_count": 0,
+          "lane_id": "-218976037#0_1",
+          "max_wait_seconds": 0.0,
+          "mean_speed": null,
+          "queue_ratio": 0.0,
+          "vehicle_count": 0
+        },
+        {
+          "approach_id": "southeast",
+          "confidence": 1.0,
+          "density": 0.0,
+          "downstream_occupancy": 0.0,
+          "halting_count": 0,
+          "lane_id": "-168874251#0_0",
+          "max_wait_seconds": 0.0,
+          "mean_speed": null,
+          "queue_ratio": 0.0,
+          "vehicle_count": 0
+        },
+        {
+          "approach_id": "southwest",
+          "confidence": 1.0,
+          "density": 0.5804953560371517,
+          "downstream_occupancy": 0.0,
+          "halting_count": 1,
+          "lane_id": "333681731#4_0",
+          "max_wait_seconds": 3.0,
+          "mean_speed": 0.0,
+          "queue_ratio": 0.5804953560371517,
+          "vehicle_count": 1
+        },
+        {
+          "approach_id": "southwest",
+          "confidence": 1.0,
+          "density": 0.0,
+          "downstream_occupancy": 0.0,
+          "halting_count": 0,
+          "lane_id": "333681731#4_1",
+          "max_wait_seconds": 0.0,
+          "mean_speed": null,
+          "queue_ratio": 0.0,
+          "vehicle_count": 0
+        },
+        {
+          "approach_id": "northwest",
+          "confidence": 1.0,
+          "density": 0.0,
+          "downstream_occupancy": 0.0,
+          "halting_count": 0,
+          "lane_id": "299767124#3_0",
+          "max_wait_seconds": 0.0,
+          "mean_speed": null,
+          "queue_ratio": 0.0,
+          "vehicle_count": 0
+        }
+      ],
+      "missing_fields": [],
+      "pedestrian_crossings": [],
+      "signal_controllers": [
+        {
+          "active_phase": 4,
+          "confidence": 1.0,
+          "missing_fields": [],
+          "phase_elapsed_seconds": 5.0,
+          "signal_state": "rrGGrrrrrrrGGrrrr",
+          "tls_id": "2959081059"
+        }
+      ],
+      "unsupported_fields": [
+        "pedestrian_crossings"
+      ]
+    }
+  ],
+  "schema_version": "0.1.0",
+  "sequence_index": 40,
+  "source": "sumo",
+  "timestamp_seconds": 40.0
+}

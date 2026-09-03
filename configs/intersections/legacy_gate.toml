@@ -1,0 +1,214 @@
+schema_version = "0.1.0"
+intersection_id = "legacy_gate"
+tls_ids = ["2959081059"]
+adjacent_intersection_ids = []
+pedestrian_crossings_supported = false
+
+[measurement]
+# Density and queue_ratio use lane_length / jam_spacing_meters as capacity.
+jam_spacing_meters = 7.5
+step_length_seconds = 1.0
+# A lane may serve several movements. Use the most occupied reachable lane;
+# never infer or split per-movement vehicle counts from an aggregate lane count.
+downstream_occupancy_aggregation = "maximum"
+
+[[lanes]]
+lane_id = "-218976037#0_0"
+approach_id = "northeast"
+downstream_lane_ids = ["-299767124#3_0", "-333681731#4_0"]
+
+[[lanes]]
+lane_id = "-218976037#0_1"
+approach_id = "northeast"
+downstream_lane_ids = ["168874251#0_0", "218976037#0_1"]
+
+[[lanes]]
+lane_id = "-168874251#0_0"
+approach_id = "southeast"
+downstream_lane_ids = ["218976037#0_0", "-299767124#3_0", "-333681731#4_0", "168874251#0_0"]
+
+[[lanes]]
+lane_id = "333681731#4_0"
+approach_id = "southwest"
+downstream_lane_ids = ["168874251#0_0", "218976037#0_0"]
+
+[[lanes]]
+lane_id = "333681731#4_1"
+approach_id = "southwest"
+downstream_lane_ids = ["218976037#0_1", "-299767124#3_0", "-333681731#4_0"]
+
+[[lanes]]
+lane_id = "299767124#3_0"
+approach_id = "northwest"
+downstream_lane_ids = ["-333681731#4_0", "168874251#0_0", "218976037#0_1", "-299767124#3_0"]
+
+[[green_phases]]
+phase_id = "green_0"
+tls_id = "2959081059"
+phase_index = 0
+signal_state = "rrrrGGggrrrrrGGgg"
+
+[[green_phases]]
+phase_id = "green_2"
+tls_id = "2959081059"
+phase_index = 2
+signal_state = "GGrrrrrrGGGrrrrrr"
+
+[[green_phases]]
+phase_id = "green_4"
+tls_id = "2959081059"
+phase_index = 4
+signal_state = "rrGGrrrrrrrGGrrrr"
+
+[[movements]]
+movement_id = "northeast_lane_0_right"
+tls_id = "2959081059"
+link_index = 0
+from_lane_id = "-218976037#0_0"
+to_lane_id = "-299767124#3_0"
+turn = "right"
+service_phase_ids = ["green_2"]
+
+[[movements]]
+movement_id = "northeast_lane_0_straight"
+tls_id = "2959081059"
+link_index = 1
+from_lane_id = "-218976037#0_0"
+to_lane_id = "-333681731#4_0"
+turn = "straight"
+service_phase_ids = ["green_2"]
+
+[[movements]]
+movement_id = "northeast_lane_1_left"
+tls_id = "2959081059"
+link_index = 2
+from_lane_id = "-218976037#0_1"
+to_lane_id = "168874251#0_0"
+turn = "left"
+service_phase_ids = ["green_4"]
+
+[[movements]]
+movement_id = "northeast_lane_1_u_turn"
+tls_id = "2959081059"
+link_index = 3
+from_lane_id = "-218976037#0_1"
+to_lane_id = "218976037#0_1"
+turn = "u_turn"
+service_phase_ids = ["green_4"]
+
+[[movements]]
+movement_id = "southeast_right"
+tls_id = "2959081059"
+link_index = 4
+from_lane_id = "-168874251#0_0"
+to_lane_id = "218976037#0_0"
+turn = "right"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "southeast_straight"
+tls_id = "2959081059"
+link_index = 5
+from_lane_id = "-168874251#0_0"
+to_lane_id = "-299767124#3_0"
+turn = "straight"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "southeast_left"
+tls_id = "2959081059"
+link_index = 6
+from_lane_id = "-168874251#0_0"
+to_lane_id = "-333681731#4_0"
+turn = "left"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "southeast_u_turn"
+tls_id = "2959081059"
+link_index = 7
+from_lane_id = "-168874251#0_0"
+to_lane_id = "168874251#0_0"
+turn = "u_turn"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "southwest_lane_0_right"
+tls_id = "2959081059"
+link_index = 8
+from_lane_id = "333681731#4_0"
+to_lane_id = "168874251#0_0"
+turn = "right"
+service_phase_ids = ["green_2"]
+
+[[movements]]
+movement_id = "southwest_lane_0_straight"
+tls_id = "2959081059"
+link_index = 9
+from_lane_id = "333681731#4_0"
+to_lane_id = "218976037#0_0"
+turn = "straight"
+service_phase_ids = ["green_2"]
+
+[[movements]]
+movement_id = "southwest_lane_1_straight"
+tls_id = "2959081059"
+link_index = 10
+from_lane_id = "333681731#4_1"
+to_lane_id = "218976037#0_1"
+turn = "straight"
+service_phase_ids = ["green_2"]
+
+[[movements]]
+movement_id = "southwest_lane_1_left"
+tls_id = "2959081059"
+link_index = 11
+from_lane_id = "333681731#4_1"
+to_lane_id = "-299767124#3_0"
+turn = "left"
+service_phase_ids = ["green_4"]
+
+[[movements]]
+movement_id = "southwest_lane_1_u_turn"
+tls_id = "2959081059"
+link_index = 12
+from_lane_id = "333681731#4_1"
+to_lane_id = "-333681731#4_0"
+turn = "u_turn"
+service_phase_ids = ["green_4"]
+
+[[movements]]
+movement_id = "northwest_right"
+tls_id = "2959081059"
+link_index = 13
+from_lane_id = "299767124#3_0"
+to_lane_id = "-333681731#4_0"
+turn = "right"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "northwest_straight"
+tls_id = "2959081059"
+link_index = 14
+from_lane_id = "299767124#3_0"
+to_lane_id = "168874251#0_0"
+turn = "straight"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "northwest_left"
+tls_id = "2959081059"
+link_index = 15
+from_lane_id = "299767124#3_0"
+to_lane_id = "218976037#0_1"
+turn = "left"
+service_phase_ids = ["green_0"]
+
+[[movements]]
+movement_id = "northwest_u_turn"
+tls_id = "2959081059"
+link_index = 16
+from_lane_id = "299767124#3_0"
+to_lane_id = "-299767124#3_0"
+turn = "u_turn"
+service_phase_ids = ["green_0"]
