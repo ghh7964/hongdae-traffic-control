@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "built_at": "2026-09-03T14:35:20.274149+09:00",
+  "timezone": "Asia/Seoul",
+  "raw_file": "networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml",
+  "raw_sha256": "16c432a9591b4ab53c471633dd31967239031f49b20ceae9ff7560baf1a8fc61",
+  "output_file": "networks/hongdae_b/generated/hongdae_b.auto.net.xml",
+  "output_sha256": "c17729eb755e88e858ea6b5ad13332dd0bf3ecd17cd7673186037971555ec8f1",
+  "structural_sha256": "470dfeb975cdae93a75ad76b78e0a06c3f5d08de6302728ea25627042bce77c3",
+  "repeated_structural_sha256": "470dfeb975cdae93a75ad76b78e0a06c3f5d08de6302728ea25627042bce77c3",
+  "structure_reproducible": true,
+  "generated_files": {
+    "hongdae_b.auto.con.xml": "8e046bea61f7ce3ea9f44f7debd9856143c420c6f3cfc778b84e08afc826fdf4",
+    "hongdae_b.auto.edg.xml": "5dfaf1a6ceeedd4c28101576452ef8c08d4fdb0446ceb39feb5b102a6742bcc9",
+    "hongdae_b.auto.net.xml": "c17729eb755e88e858ea6b5ad13332dd0bf3ecd17cd7673186037971555ec8f1",
+    "hongdae_b.auto.nod.xml": "200267bcbfa4dfe7794a24ee66a4f528f4e0adc05e54826714eef138982626c7",
+    "hongdae_b.auto.tll.xml": "a16e6154f765ff053fcda0d71c9882a1307140d55c5ea9263193bca0e4202ab6",
+    "hongdae_b.auto.typ.xml": "15e6f9cc447d79ce29f7ba824219f9a96d17ba6484bbedc8cf5e3555b64f1f76"
+  },
+  "vehicle_typemap": {
+    "path": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvert.typ.xml",
+    "sha256": "90435cb5ab03c71de7822841fad52481743fbd35af3142a2c87230c9f2fd39b6"
+  },
+  "pedestrian_typemap": {
+    "path": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvertPedestrians.typ.xml",
+    "sha256": "2ab9cdfc711f67364e963863d49f72425afc54001bf1b75348dbca509e4b54af"
+  },
+  "canonical_command": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/netconvert --osm-files /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml --type-files /Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvert.typ.xml,/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvertPedestrians.typ.xml --osm.sidewalks --osm.crossings --osm.turn-lanes --osm.lane-access --walkingareas --output.street-names --output.original-names --write-license --keep-edges.in-geo-boundary 126.9168,37.5510,126.9296,37.5605 --plain-output-prefix /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/generated/hongdae_b.auto --output-file /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/generated/hongdae_b.auto.net.xml --verbose",
+  "execution_environment": {
+    "SUMO_HOME": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo"
+  },
+  "actual_commands": [
+    "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/netconvert --osm-files /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml --type-files /Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvert.typ.xml,/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvertPedestrians.typ.xml --osm.sidewalks --osm.crossings --osm.turn-lanes --osm.lane-access --walkingareas --output.street-names --output.original-names --write-license --keep-edges.in-geo-boundary 126.9168,37.5510,126.9296,37.5605 --plain-output-prefix /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto --output-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto.net.xml --verbose",
+    "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/netconvert --osm-files /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml --type-files /Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvert.typ.xml,/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvertPedestrians.typ.xml --osm.sidewalks --osm.crossings --osm.turn-lanes --osm.lane-access --walkingareas --output.street-names --output.original-names --write-license --keep-edges.in-geo-boundary 126.9168,37.5510,126.9296,37.5605 --plain-output-prefix /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-rebuild-91sutsyx/hongdae_b.auto --output-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-rebuild-91sutsyx/hongdae_b.auto.net.xml --verbose",
+    "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/netconvert --sumo-net-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto.net.xml --output-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/reloaded.net.xml",
+    "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/sumo --net-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto.net.xml --begin 0 --end 0 --no-step-log true"
+  ],
+  "validation": {
+    "netconvert_reload": "passed",
+    "sumo_load_without_demand": "passed"
+  },
+  "deferred_options": [
+    "geometry.remove",
+    "junctions.join",
+    "tls.join",
+    "tls.guess",
+    "tls.guess-signals",
+    "sidewalks.guess",
+    "crossings.guess",
+    "tls.default-type"
+  ],
+  "git": {
+    "head": "950f74166f6cadbd8c836a93e3de2230783b7512",
+    "expected_head": "950f74166f6cadbd8c836a93e3de2230783b7512",
+    "head_matches_expected": true,
+    "status_porcelain": [
+      "?? networks/",
+      "?? scripts/network/",
+      "?? tests/test_network_tooling.py"
+    ],
+    "clean": false
+  }
+}

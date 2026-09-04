@@ -1,0 +1,23 @@
+/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/netconvert --sumo-net-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto.net.xml --output-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/reloaded.net.xml
+pj_obj_create: Cannot find proj.db
+pj_obj_create: Cannot find proj.db
+pj_obj_create: Cannot find proj.db
+pj_obj_create: Cannot find proj.db
+Warning: Found sharp turn with radius 7.58 at the end of edge '-172109959#2'.
+Warning: Found angle of 100.57 degrees at edge '-239548917#1', segment 0.
+Warning: Found angle of 116.77 degrees at edge '-299959893', segment 2.
+Warning: Found sharp turn with radius 7.56 at the start of edge '1494588885#1'.
+Warning: Found sharp turn with radius 7.58 at the start of edge '172109959#2'.
+Warning: Found angle of 100.57 degrees at edge '239548917#1', segment 0.
+Warning: Found angle of 116.77 degrees at edge '299959893', segment 1.
+Warning: Found sharp turn with radius 4.84 at the start of edge '370671696#3'.
+Warning: Minor green from edge '254749392' to edge '515592172#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: Minor green from edge '37402457#10' to edge '299406403#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: Minor green from edge '299767124#4' to edge '218976037#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: Speed of straight connection '612480573#2_0->-612480578_0' reduced by 7.56 due to turning radius of 55.27 (length=14.02, angle=29.74).
+Warning: Speed of straight connection '370675433_0->239549679#0_0' reduced by 5.99 due to turning radius of 11.33 (length=2.34, angle=27.74).
+Warning: Speed of straight connection '420153379#3_0->381420342_0' reduced by 6.60 due to turning radius of 9.67 (length=3.00, angle=34.40).
+Warning: Speed of straight connection '-370668073_0->-370668071_0' reduced by 5.86 due to turning radius of 11.71 (length=2.27, angle=26.94).
+Warning: Speed of straight connection '-37401914#0_0->479979085#0_0' reduced by 8.78 due to turning radius of 32.85 (length=15.18, angle=42.14).
+Warning: 18 total messages of type: Speed of % connection '%' reduced by % due to turning radius of % (length=%, angle=%).
+Success.

@@ -1,0 +1,4 @@
+/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/bin/sumo --net-file /var/folders/2x/dvtg4fls0yz5q3xdn1t_dhn80000gn/T/hongdae-build-_yiz2qcw/hongdae_b.auto.net.xml --begin 0 --end 0 --no-step-log true
+pj_obj_create: Cannot find proj.db
+pj_obj_create: Cannot find proj.db
+pj_obj_create: Cannot find proj.db

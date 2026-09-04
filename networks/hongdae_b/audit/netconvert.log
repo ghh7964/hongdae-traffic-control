@@ -1,0 +1,104 @@
+Parsing types from '/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvert.typ.xml' ... done.
+Parsing types from '/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/data/typemap/osmNetconvertPedestrians.typ.xml' ... done.
+Parsing nodes from osm-file '/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml' ... done (8ms).
+Parsing edges from osm-file '/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml' ... done (11ms).
+Removing duplicate edges ... done.
+pj_obj_create: Cannot find proj.db
+Warning: Removing pt stop '3429566616' on non existing edge '332222851#1'.
+Warning: Removing pt stop '3429566617' on non existing edge '332222851#1'.
+Parsing relations from osm-file '/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml' ...
+Warning: Ignoring restriction relation '8489651' with unknown from-way.
+Warning: Ignoring restriction relation '8489651' with unknown to-way.
+Warning: Ignoring restriction relation '8489655' with unknown from-way.
+Warning: Ignoring restriction relation '8489655' with unknown to-way.
+Warning: Ignoring restriction relation '8489658' with unknown from-way.
+Warning: Ignoring restriction relation '8489658' with unknown to-way.
+Warning: Ignoring restriction relation '8489663' with unknown from-way.
+Warning: Ignoring restriction relation '8489663' with unknown to-way.
+Warning: Ignoring restriction relation '8489666' with unknown from-way.
+Warning: Ignoring restriction relation '8489666' with unknown to-way.
+ done (2ms).
+ Import done:
+   1069 nodes loaded.
+   38 types loaded.
+   2092 edges loaded.
+Proj projection parameters used: '+proj=utm +zone=52 +ellps=WGS84 +datum=WGS84 +units=m +no_defs'.
+Removing self-loops ... done (0ms).
+Processing public transport stops ...
+Warning: Could not find corresponding edge or compatible lane for free-floating pt stop '5919544686' (홍대입구). Thus, it will be removed!
+Warning: Could not find corresponding edge or compatible lane for free-floating pt stop '5937884688' (홍대입구). Thus, it will be removed!
+ done (1ms).
+Revising public transport stops based on pt lines ...
+Warning: Could not assign stop '13699118710' to pt line '2894541' (closest edge '-1494588884', distance 156.90). Ignoring!
+Warning: Removed invalid stop '13699118710' from line '2894541'.
+Warning: Cannot revise pt stop localization for pt line '4781419', which has no route edges. Ignoring!
+ done (0ms).
+Align pt stop id signs with corresponding edge id signs ... done (0ms).
+Removing empty nodes ... done (1ms).
+   44 nodes removed.
+Moving network to origin ... done (3ms).
+pj_obj_create: Cannot find proj.db
+Computing turning directions ... done (1ms).
+Assigning nodes to traffic lights ... done (0ms).
+Warning: Found sharp turn with radius 7.58 at the end of edge '-172109959#2'.
+Warning: Found angle of 100.57 degrees at edge '-239548917#1', segment 0.
+Warning: Found angle of 116.77 degrees at edge '-299959893', segment 2.
+Warning: Found sharp turn with radius 7.56 at the start of edge '1494588885#1'.
+Warning: Found sharp turn with radius 7.58 at the start of edge '172109959#2'.
+Warning: Found angle of 100.57 degrees at edge '239548917#1', segment 0.
+Warning: Found angle of 116.77 degrees at edge '299959893', segment 1.
+Warning: Found sharp turn with radius 4.84 at the start of edge '370671696#3'.
+Sorting nodes' edges ... done (0ms).
+Computing node shapes ... done (17ms).
+Computing edge shapes ... done (7ms).
+Computing node types ... done (1ms).
+Computing priorities ... done (1ms).
+Computing approached edges ... done (0ms).
+Guessing and setting roundabouts ... done (1ms).
+Computing approaching lanes ... done (3ms).
+Dividing of lanes on approached lanes ... done (2ms).
+Processing turnarounds ... done (0ms).
+Rechecking of lane endings ... done (1ms).
+Computing traffic light control information ... done (0ms).
+Computing node logics ... done (4ms).
+Computing traffic light logics ...
+Warning: Minor green from edge '254749392' to edge '515592172#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: The traffic light '11841458566' does not control any links; it will not be build.
+Warning: Could not build program '0' for traffic light '11841458566'
+Warning: Minor green from edge '37402457#10' to edge '299406403#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: Minor green from edge '299767124#4' to edge '218976037#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: The traffic light '436869362' does not control any links; it will not be build.
+Warning: Could not build program '0' for traffic light '436869362'
+ done (1ms).
+ 20 traffic light(s) computed.
+Building inner edges ...
+Warning: Speed of straight connection '612480573#2_0->-612480578_0' reduced by 7.56 due to turning radius of 55.27 (length=14.02, angle=29.74).
+Warning: Speed of straight connection '370675433_0->239549679#0_0' reduced by 5.99 due to turning radius of 11.33 (length=2.34, angle=27.74).
+Warning: Speed of straight connection '420153379#3_0->381420342_0' reduced by 6.60 due to turning radius of 9.67 (length=3.00, angle=34.40).
+Warning: Speed of straight connection '-370668073_0->-370668071_0' reduced by 5.86 due to turning radius of 11.71 (length=2.27, angle=26.94).
+Warning: Speed of straight connection '-37401914#0_0->479979085#0_0' reduced by 8.78 due to turning radius of 32.85 (length=15.18, angle=42.14).
+ done (16ms).
+Warning: Minor green from edge '37402457#10' to edge '299406403#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Warning: Minor green from edge '299767124#4' to edge '218976037#0' exceeds 19.44m/s. Maybe a left-turn lane is missing.
+Find accesses for pt rail stops ... done (3ms).
+Warning: Stop '-357917133' named '동교동삼거리연희동방면' from line '4781419' on edge '-1494588884' is not part of the route.
+Warning: Removing pt stop '13699118710' on non existing edge ''.
+Warning: Removed 1 pt stops because they could not be assigned to the network
+-----------------------------------------------------
+Summary:
+ Node type statistics:
+  Unregulated junctions       : 0
+  Dead-end junctions          : 237
+  Priority junctions          : 699
+  Right-before-left junctions : 69
+  Traffic light junctions      : 20
+ Network boundaries:
+  Original boundary  : 126.91,37.55,126.93,37.57
+  Applied offset     : -315716.05,-4157792.18
+  Converted boundary : 0.00,0.00,1647.92,1608.03
+-----------------------------------------------------
+Writing network ... done (75ms).
+Warning: 7 total messages of type: Ignoring restriction relation '%' with unknown from-way.
+Warning: 6 total messages of type: Minor green from edge '%' to edge '%' exceeds %m/s. Maybe a left-turn lane is missing.
+Warning: 18 total messages of type: Speed of % connection '%' reduced by % due to turning radius of % (length=%, angle=%).
+Success.

@@ -1,0 +1,27 @@
+<osm-script timeout="240" element-limit="1073741824">
+        
+    <union>
+        
+        <query type="nwr">
+            <has-kv k="highway" modv="" regv="."/>
+            <bbox-query n="37.5605" s="37.551" w="126.9168" e="126.9296"/>
+        </query>
+
+        <query type="nwr">
+            <has-kv k="railway" modv="" regv="subway_entrance|station"/>
+            <bbox-query n="37.5605" s="37.551" w="126.9168" e="126.9296"/>
+        </query>
+
+        <query type="nwr">
+            <has-kv k="public_transport" modv="" regv="."/>
+            <bbox-query n="37.5605" s="37.551" w="126.9168" e="126.9296"/>
+        </query>
+    </union>
+    <union>
+        <item/>
+        <recurse type="way-node"/>
+        <recurse type="node-relation"/>
+        <recurse type="way-relation"/>
+    </union>
+    <print mode="body"/>
+</osm-script>

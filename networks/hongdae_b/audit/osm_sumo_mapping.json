@@ -1,0 +1,543 @@
+[
+  {
+    "physical_location": "홍익대학교 정문 앞 교차로",
+    "target_name": "hongik_gate",
+    "osm_object": "node/2959081059",
+    "raw_present": true,
+    "raw_tags": {
+      "crossing": "traffic_signals",
+      "highway": "traffic_signals",
+      "name": "홍익대앞",
+      "name:en": "Hongik-Univ.",
+      "name:ja": "弘益大",
+      "name:ko": "홍익대앞",
+      "name:ko-Latn": "Hongikdaeap",
+      "traffic_signals": "signal"
+    },
+    "raw_related_way_ids": [
+      "168874251",
+      "218976037",
+      "299767124",
+      "333681731"
+    ],
+    "raw_coordinates": {
+      "longitude": "126.9242676",
+      "latitude": "37.5528519"
+    },
+    "sumo_junction_ids": [
+      "2959081059"
+    ],
+    "related_sumo_junction_ids": [
+      "13227384203",
+      "2959081059",
+      "3592409068",
+      "3592409069",
+      "3592409070"
+    ],
+    "related_edge_ids": [
+      "-168874251#0",
+      "-218976037#0",
+      "-299767124#4",
+      "-333681731#5",
+      "168874251#0",
+      "218976037#0",
+      "299767124#4",
+      "333681731#5"
+    ],
+    "incoming_edge_ids": [
+      "-168874251#0",
+      "-218976037#0",
+      "299767124#4",
+      "333681731#5"
+    ],
+    "outgoing_edge_ids": [
+      "-299767124#4",
+      "-333681731#5",
+      "168874251#0",
+      "218976037#0"
+    ],
+    "related_lane_ids": [
+      "-168874251#0_0",
+      "-218976037#0_0",
+      "-218976037#0_1",
+      "-218976037#0_2",
+      "-299767124#4_0",
+      "-333681731#5_0",
+      "168874251#0_0",
+      "218976037#0_0",
+      "218976037#0_1",
+      "218976037#0_2",
+      "299767124#4_0",
+      "333681731#5_0",
+      "333681731#5_1"
+    ],
+    "pedestrian_facility_edge_ids": [
+      ":2959081059_w1"
+    ],
+    "nearest_pedestrian_matches": [
+      {
+        "distance_m": 0.0,
+        "osm_way_id": "168874251",
+        "sumo_edge_id": "-168874251#0",
+        "pedestrian_lane_ids": [
+          "-168874251#0_0"
+        ]
+      },
+      {
+        "distance_m": 0.0,
+        "osm_way_id": "218976037",
+        "sumo_edge_id": "-218976037#0",
+        "pedestrian_lane_ids": [
+          "-218976037#0_0"
+        ]
+      },
+      {
+        "distance_m": 0.0,
+        "osm_way_id": "168874251",
+        "sumo_edge_id": "168874251#0",
+        "pedestrian_lane_ids": [
+          "168874251#0_0"
+        ]
+      },
+      {
+        "distance_m": 0.0,
+        "osm_way_id": "218976037",
+        "sumo_edge_id": "218976037#0",
+        "pedestrian_lane_ids": [
+          "218976037#0_0"
+        ]
+      },
+      {
+        "distance_m": 17.0,
+        "osm_way_id": "1441590149",
+        "sumo_edge_id": "1441590149",
+        "pedestrian_lane_ids": [
+          "1441590149_0"
+        ]
+      }
+    ],
+    "nearest_pedestrian_edge_ids": [
+      "-168874251#0",
+      "-218976037#0",
+      "168874251#0",
+      "218976037#0",
+      "1441590149"
+    ],
+    "nearest_pedestrian_lane_ids": [
+      "-168874251#0_0",
+      "-218976037#0_0",
+      "1441590149_0",
+      "168874251#0_0",
+      "218976037#0_0"
+    ],
+    "tl_logic_ids": [
+      "2959081059"
+    ],
+    "controlled_link_count": 17,
+    "controlled_link_direction_counts": {
+      "l": 4,
+      "r": 4,
+      "s": 5,
+      "t": 4
+    },
+    "tl_phase_counts": {
+      "2959081059": 6
+    },
+    "automatic_signal": true,
+    "pedestrian_access": "direct-generated",
+    "status": "exact-junction",
+    "correction_needed": "P0-controlled-links-and-pedestrian-review"
+  },
+  {
+    "physical_location": "홍대입구역사거리",
+    "target_name": "hongdae_station_intersection",
+    "osm_object": "node/3034197250",
+    "raw_present": true,
+    "raw_tags": {
+      "highway": "traffic_signals",
+      "name": "홍대입구역사거리",
+      "name:en": "Hongik-Univ.-Station Four Way Intersection",
+      "name:ja": "弘大入口駅十字路",
+      "name:ko": "홍대입구역사거리",
+      "traffic_signals": "signal"
+    },
+    "raw_related_way_ids": [
+      "218976035",
+      "254749392",
+      "333681721",
+      "333681730"
+    ],
+    "raw_coordinates": {
+      "longitude": "126.9215965",
+      "latitude": "37.5551295"
+    },
+    "sumo_junction_ids": [
+      "3034197250"
+    ],
+    "related_sumo_junction_ids": [
+      "11059771900",
+      "3034197250",
+      "5797693668",
+      "5797693671",
+      "5803642652"
+    ],
+    "related_edge_ids": [
+      "-218976035#0",
+      "-254749392",
+      "218976035#0",
+      "254749392",
+      "333681721#0",
+      "333681730#7"
+    ],
+    "incoming_edge_ids": [
+      "-218976035#0",
+      "-254749392",
+      "333681730#7"
+    ],
+    "outgoing_edge_ids": [
+      "218976035#0",
+      "254749392",
+      "333681721#0"
+    ],
+    "related_lane_ids": [
+      "-218976035#0_0",
+      "-218976035#0_1",
+      "-254749392_0",
+      "-254749392_1",
+      "-254749392_2",
+      "218976035#0_0",
+      "254749392_0",
+      "254749392_1",
+      "254749392_2",
+      "333681721#0_0",
+      "333681721#0_1",
+      "333681721#0_2",
+      "333681721#0_3",
+      "333681721#0_4",
+      "333681721#0_5",
+      "333681730#7_0",
+      "333681730#7_1",
+      "333681730#7_2",
+      "333681730#7_3",
+      "333681730#7_4",
+      "333681730#7_5"
+    ],
+    "pedestrian_facility_edge_ids": [],
+    "nearest_pedestrian_matches": [
+      {
+        "distance_m": 11.2,
+        "osm_way_id": "596037749",
+        "sumo_edge_id": "596037749#10",
+        "pedestrian_lane_ids": [
+          "596037749#10_0"
+        ]
+      },
+      {
+        "distance_m": 11.2,
+        "osm_way_id": "596037749",
+        "sumo_edge_id": "596037749#11",
+        "pedestrian_lane_ids": [
+          "596037749#11_0"
+        ]
+      },
+      {
+        "distance_m": 15.5,
+        "osm_way_id": "612477716",
+        "sumo_edge_id": "612477716#3",
+        "pedestrian_lane_ids": [
+          "612477716#3_0"
+        ]
+      },
+      {
+        "distance_m": 15.5,
+        "osm_way_id": "612477716",
+        "sumo_edge_id": "612477716#4",
+        "pedestrian_lane_ids": [
+          "612477716#4_0"
+        ]
+      },
+      {
+        "distance_m": 17.2,
+        "osm_way_id": "612477716",
+        "sumo_edge_id": "612477716#2",
+        "pedestrian_lane_ids": [
+          "612477716#2_0"
+        ]
+      }
+    ],
+    "nearest_pedestrian_edge_ids": [
+      "596037749#10",
+      "596037749#11",
+      "612477716#3",
+      "612477716#4",
+      "612477716#2"
+    ],
+    "nearest_pedestrian_lane_ids": [
+      "596037749#10_0",
+      "596037749#11_0",
+      "612477716#2_0",
+      "612477716#3_0",
+      "612477716#4_0"
+    ],
+    "tl_logic_ids": [
+      "3034197250"
+    ],
+    "controlled_link_count": 19,
+    "controlled_link_direction_counts": {
+      "l": 4,
+      "r": 3,
+      "s": 10,
+      "t": 2
+    },
+    "tl_phase_counts": {
+      "3034197250": 6
+    },
+    "automatic_signal": true,
+    "pedestrian_access": "nearby-11.2m-connectivity-unverified",
+    "status": "exact-junction",
+    "correction_needed": "P0-controlled-links-and-pedestrian-review"
+  },
+  {
+    "physical_location": "2호선 홍대입구역 9번 출구",
+    "target_name": "hongdae_exit_9",
+    "osm_object": "node/3404932011",
+    "raw_present": true,
+    "raw_tags": {
+      "description": "홍대입구역 9번출구",
+      "description:en": "Hongik Univ. Station gate 9",
+      "description:ja": "弘大入口駅 9番出口",
+      "railway": "subway_entrance",
+      "ref": "9"
+    },
+    "raw_related_way_ids": [],
+    "raw_coordinates": {
+      "longitude": "126.9229218",
+      "latitude": "37.5560397"
+    },
+    "sumo_junction_ids": [],
+    "related_sumo_junction_ids": [],
+    "related_edge_ids": [],
+    "incoming_edge_ids": [],
+    "outgoing_edge_ids": [],
+    "related_lane_ids": [],
+    "pedestrian_facility_edge_ids": [],
+    "nearest_pedestrian_matches": [
+      {
+        "distance_m": 4.9,
+        "osm_way_id": "596037749",
+        "sumo_edge_id": "596037749#8",
+        "pedestrian_lane_ids": [
+          "596037749#8_0"
+        ]
+      },
+      {
+        "distance_m": 7.9,
+        "osm_way_id": "596037749",
+        "sumo_edge_id": "596037749#9",
+        "pedestrian_lane_ids": [
+          "596037749#9_0"
+        ]
+      },
+      {
+        "distance_m": 36.8,
+        "osm_way_id": "613369914",
+        "sumo_edge_id": "613369914#3",
+        "pedestrian_lane_ids": [
+          "613369914#3_0"
+        ]
+      },
+      {
+        "distance_m": 37.3,
+        "osm_way_id": "613369914",
+        "sumo_edge_id": "613369914#2",
+        "pedestrian_lane_ids": [
+          "613369914#2_0"
+        ]
+      },
+      {
+        "distance_m": 55.6,
+        "osm_way_id": "412732210",
+        "sumo_edge_id": "-412732210",
+        "pedestrian_lane_ids": [
+          "-412732210_0"
+        ]
+      }
+    ],
+    "nearest_pedestrian_edge_ids": [
+      "596037749#8",
+      "596037749#9",
+      "613369914#3",
+      "613369914#2",
+      "-412732210"
+    ],
+    "nearest_pedestrian_lane_ids": [
+      "-412732210_0",
+      "596037749#8_0",
+      "596037749#9_0",
+      "613369914#2_0",
+      "613369914#3_0"
+    ],
+    "tl_logic_ids": [],
+    "controlled_link_count": 0,
+    "controlled_link_direction_counts": {},
+    "tl_phase_counts": {},
+    "automatic_signal": false,
+    "pedestrian_access": "nearby-4.9m-connectivity-unverified",
+    "status": "raw-object-only-no-sumo-mapping",
+    "correction_needed": "P1-pedestrian-connectivity-review"
+  },
+  {
+    "physical_location": "공항철도·경의중앙선 역사 방향",
+    "target_name": "airport_railroad_station",
+    "osm_object": "node/5919544685",
+    "raw_present": true,
+    "raw_tags": {
+      "addr:city": "서울특별시",
+      "addr:district": "마포구",
+      "addr:housenumber": "지하188",
+      "addr:postcode": "04050",
+      "addr:street": "양화로",
+      "addr:subdistrict": "동교동",
+      "name": "홍대입구",
+      "name:en": "Hongik Univ.",
+      "name:ja": "弘大入口",
+      "name:ko": "홍대입구",
+      "name:ko-Kana": "ホンデイック",
+      "name:ko-Latn": "Hongdaeibgu",
+      "name:zh": "弘大入口",
+      "name:zh-Hans": "弘大入口",
+      "name:zh-Hant": "弘大入口",
+      "network": "수도권 전철",
+      "network:en": "Seoul Metropolitan Subway",
+      "network:ko": "수도권 전철",
+      "network:wikidata": "Q16950",
+      "operator": "한국철도공사;공항철도주식회사",
+      "platforms": "2",
+      "public_transport": "station",
+      "railway": "station",
+      "ref": "A03;K314",
+      "station": "subway",
+      "subway": "yes",
+      "train": "yes",
+      "wheelchair": "yes"
+    },
+    "raw_related_way_ids": [],
+    "raw_coordinates": {
+      "longitude": "126.9269080",
+      "latitude": "37.5573487"
+    },
+    "sumo_junction_ids": [],
+    "related_sumo_junction_ids": [],
+    "related_edge_ids": [],
+    "incoming_edge_ids": [],
+    "outgoing_edge_ids": [],
+    "related_lane_ids": [],
+    "pedestrian_facility_edge_ids": [],
+    "nearest_pedestrian_matches": [
+      {
+        "distance_m": 6.9,
+        "osm_way_id": "471699326",
+        "sumo_edge_id": "471699326#3",
+        "pedestrian_lane_ids": [
+          "471699326#3_0"
+        ]
+      },
+      {
+        "distance_m": 7.3,
+        "osm_way_id": "471699326",
+        "sumo_edge_id": "471699326#2",
+        "pedestrian_lane_ids": [
+          "471699326#2_0"
+        ]
+      },
+      {
+        "distance_m": 13.2,
+        "osm_way_id": "614336024",
+        "sumo_edge_id": "-614336024#1",
+        "pedestrian_lane_ids": [
+          "-614336024#1_0"
+        ]
+      },
+      {
+        "distance_m": 13.2,
+        "osm_way_id": "614336024",
+        "sumo_edge_id": "614336024#1",
+        "pedestrian_lane_ids": [
+          "614336024#1_0"
+        ]
+      },
+      {
+        "distance_m": 19.8,
+        "osm_way_id": "370673474",
+        "sumo_edge_id": "-370673474",
+        "pedestrian_lane_ids": [
+          "-370673474_0"
+        ]
+      }
+    ],
+    "nearest_pedestrian_edge_ids": [
+      "471699326#3",
+      "471699326#2",
+      "-614336024#1",
+      "614336024#1",
+      "-370673474"
+    ],
+    "nearest_pedestrian_lane_ids": [
+      "-370673474_0",
+      "-614336024#1_0",
+      "471699326#2_0",
+      "471699326#3_0",
+      "614336024#1_0"
+    ],
+    "tl_logic_ids": [],
+    "controlled_link_count": 0,
+    "controlled_link_direction_counts": {},
+    "tl_phase_counts": {},
+    "automatic_signal": false,
+    "pedestrian_access": "nearby-6.9m-connectivity-unverified",
+    "status": "raw-object-only-no-sumo-mapping",
+    "correction_needed": "P1-pedestrian-connectivity-review"
+  },
+  {
+    "physical_location": "어울마당로/레드로드 북·중부",
+    "target_name": "eoulmadang_redroad",
+    "osm_object": "way/919071199",
+    "raw_present": true,
+    "raw_tags": {
+      "highway": "pedestrian",
+      "motor_vehicle": "yes",
+      "name": "어울마당로",
+      "name:en": "Eoulmadang-ro",
+      "name:ko": "어울마당로"
+    },
+    "raw_related_way_ids": [
+      "919071199"
+    ],
+    "raw_coordinates": null,
+    "sumo_junction_ids": [],
+    "related_sumo_junction_ids": [
+      "4426325373",
+      "4426326194"
+    ],
+    "related_edge_ids": [
+      "919071199"
+    ],
+    "incoming_edge_ids": [],
+    "outgoing_edge_ids": [],
+    "related_lane_ids": [
+      "919071199_0"
+    ],
+    "pedestrian_facility_edge_ids": [],
+    "nearest_pedestrian_matches": [],
+    "nearest_pedestrian_edge_ids": [],
+    "nearest_pedestrian_lane_ids": [],
+    "tl_logic_ids": [],
+    "controlled_link_count": 0,
+    "controlled_link_direction_counts": {},
+    "tl_phase_counts": {},
+    "automatic_signal": false,
+    "pedestrian_access": "direct-generated",
+    "status": "related-osm-ways-mapped-no-object-junction",
+    "correction_needed": "P1-access-and-pedestrian-review"
+  }
+]

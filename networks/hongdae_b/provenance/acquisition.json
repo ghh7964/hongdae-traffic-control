@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "acquired_at": "2026-09-03T14:35:14.736285+09:00",
+  "started_at": "2026-09-03T14:35:12.069432+09:00",
+  "timezone": "Asia/Seoul",
+  "bbox_west_south_east_north": [
+    126.9168,
+    37.551,
+    126.9296,
+    37.5605
+  ],
+  "overpass_endpoint": "https://overpass-api.de/api/interpreter",
+  "requested_retries": 5,
+  "observed_retry_count": 0,
+  "osm_base": "2026-09-03T05:33:28Z",
+  "raw_file": "networks/hongdae_b/raw/hongdae_b_20260903_bbox.osm.xml",
+  "raw_size_bytes": 393095,
+  "raw_sha256": "16c432a9591b4ab53c471633dd31967239031f49b20ceae9ff7560baf1a8fc61",
+  "raw_permissions": "0444",
+  "target_osm_objects_present": {
+    "hongik_gate": true,
+    "hongdae_station_intersection": true,
+    "hongdae_exit_9": true,
+    "airport_railroad_station": true,
+    "eoulmadang_redroad": true
+  },
+  "query_file": "networks/hongdae_b/provenance/osmget.query.xml",
+  "config_file": "networks/hongdae_b/provenance/osmget.config.xml",
+  "command_file": "networks/hongdae_b/provenance/fetch.command.txt",
+  "log_file": "networks/hongdae_b/provenance/osmget.log",
+  "display_command": "env SUMO_HOME=/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo PYTHONPATH=/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools /opt/homebrew/opt/python@3.13/bin/python3.13 /Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools/osmGet.py --bbox 126.9168,37.5510,126.9296,37.5605 --prefix hongdae_b_20260903 --output-dir /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/raw --url https://overpass-api.de/api/interpreter --road-types '{\"highway\":[\".\"],\"railway\":[\"subway_entrance\",\"station\"]}' --query-output /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/provenance/osmget.query.xml --config-output /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/provenance/osmget.config.xml --retries 5 --verbose",
+  "actual_command": "env SUMO_HOME=/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo PYTHONPATH=/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools /opt/homebrew/opt/python@3.13/bin/python3.13 /Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools/osmGet.py --bbox 126.9168,37.5510,126.9296,37.5605 --prefix hongdae_b_20260903 --output-dir /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/raw --url https://overpass-api.de/api/interpreter --road-types '{\"highway\":[\".\"],\"railway\":[\"subway_entrance\",\"station\"]}' --query-output /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/provenance/osmget.query.xml --config-output /Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/provenance/osmget.config.xml --retries 5 --verbose",
+  "sumo_version": "Eclipse SUMO sumo 1.27.1",
+  "netconvert_version": "Eclipse SUMO netconvert 1.27.1",
+  "sumolib_version": "v1.26.0",
+  "execution_environment": {
+    "SUMO_HOME": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo",
+    "PYTHONPATH": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools"
+  },
+  "osm_get_path": "/Library/Frameworks/EclipseSUMO.framework/Versions/1.27.1/EclipseSUMO/share/sumo/tools/osmGet.py",
+  "osm_get_sha256": "00e4034ebf5674221e676ee110a82cbb92cdfb599fb8ec7d8f578647900d38c4",
+  "config_output_note": "osmGet.py 1.27.1 accepts --config-output but does not create it; the wrapper preserved a standalone XML mirror of the effective options",
+  "git": {
+    "head": "950f74166f6cadbd8c836a93e3de2230783b7512",
+    "expected_head": "950f74166f6cadbd8c836a93e3de2230783b7512",
+    "head_matches_expected": true,
+    "status_porcelain": [
+      "?? networks/",
+      "?? scripts/network/",
+      "?? tests/test_network_tooling.py"
+    ],
+    "clean": false
+  },
+  "attribution": "© OpenStreetMap contributors; data available under ODbL 1.0"
+}

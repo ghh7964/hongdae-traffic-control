@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Wrapper-preserved effective osmGet configuration. -->
+<configuration>
+    <bbox value="126.9168,37.5510,126.9296,37.5605"/>
+    <prefix value="hongdae_b_20260903"/>
+    <output-dir value="/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/raw"/>
+    <url value="https://overpass-api.de/api/interpreter"/>
+    <road-types value="{&quot;highway&quot;:[&quot;.&quot;],&quot;railway&quot;:[&quot;subway_entrance&quot;,&quot;station&quot;]}"/>
+    <query-output value="/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/provenance/osmget.query.xml"/>
+    <config-output value="/Users/ghh7964/Documents/VSCode/hongdae-traffic-control/networks/hongdae_b/.fetch-s7wi040p/provenance/osmget.config.xml"/>
+    <retries value="5"/>
+    <verbose value="true"/>
+</configuration>
