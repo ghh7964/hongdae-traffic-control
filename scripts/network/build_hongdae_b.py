@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import shlex
 import subprocess
 import tempfile
@@ -26,6 +25,7 @@ try:
         git_state,
         sha256_file,
         structural_xml_sha256,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         write_json_exclusive,
         write_text_exclusive,
@@ -45,6 +45,7 @@ except ImportError:
         git_state,
         sha256_file,
         structural_xml_sha256,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         write_json_exclusive,
         write_text_exclusive,
@@ -96,12 +97,10 @@ def make_netconvert_command(
 
 
 def run(command: list[str], tools: SumoTools) -> subprocess.CompletedProcess[str]:
-    environment = os.environ.copy()
-    environment["SUMO_HOME"] = str(tools.sumo_home)
     return subprocess.run(
         command,
         cwd=REPO_ROOT,
-        env=environment,
+        env=sumo_subprocess_environment(tools),
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
@@ -235,7 +234,11 @@ def main() -> int:
                 "sha256": sha256_file(tools.pedestrian_typemap),
             },
             "canonical_command": command_text(canonical_command),
-            "execution_environment": {"SUMO_HOME": str(tools.sumo_home)},
+            "execution_environment": {
+                "SUMO_HOME": str(tools.sumo_home),
+                "PROJ_DATA": str(tools.proj_data) if tools.proj_data else None,
+            },
+            "proj_data_source": tools.proj_data_source,
             "sumo_version": first_output_line([str(tools.sumo), "--version"]),
             "netconvert_version": first_output_line([str(tools.netconvert), "--version"]),
             "resolved_tools": {
@@ -245,6 +248,7 @@ def main() -> int:
                 "netcheck": str(tools.netcheck),
                 "vehicle_typemap": str(tools.vehicle_typemap),
                 "pedestrian_typemap": str(tools.pedestrian_typemap),
+                "proj_data": str(tools.proj_data) if tools.proj_data else None,
             },
             "actual_commands": [
                 command_text(first_command),

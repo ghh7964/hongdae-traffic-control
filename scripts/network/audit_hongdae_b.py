@@ -6,7 +6,6 @@ import csv
 import heapq
 import json
 import math
-import os
 import re
 import subprocess
 import sys
@@ -26,6 +25,7 @@ try:
         lane_allows,
         normalize_warning,
         sha256_file,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         weak_components,
         write_json_exclusive,
@@ -42,6 +42,7 @@ except ImportError:
         lane_allows,
         normalize_warning,
         sha256_file,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         weak_components,
         write_json_exclusive,
@@ -860,15 +861,7 @@ def main() -> int:
     netconvert_command = (provenance_dir / "netconvert.command.txt").read_text(encoding="utf-8")
 
     netcheck_command = [sys.executable, str(tools.netcheck), str(net_path)]
-    netcheck_environment = os.environ.copy()
-    netcheck_environment["SUMO_HOME"] = str(tools.sumo_home)
-    tools_pythonpath = str(tools.sumo_home / "tools")
-    existing_pythonpath = netcheck_environment.get("PYTHONPATH")
-    netcheck_environment["PYTHONPATH"] = (
-        tools_pythonpath + os.pathsep + existing_pythonpath
-        if existing_pythonpath
-        else tools_pythonpath
-    )
+    netcheck_environment = sumo_subprocess_environment(tools, include_pythonpath=True)
     netcheck = subprocess.run(
         netcheck_command,
         cwd=REPO_ROOT,

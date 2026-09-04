@@ -28,6 +28,7 @@ try:
         first_output_line,
         git_state,
         osm_ids_present,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         sha256_file,
         write_json_exclusive,
@@ -48,6 +49,7 @@ except ImportError:
         first_output_line,
         git_state,
         osm_ids_present,
+        sumo_subprocess_environment,
         sumo_tools_from_args,
         sha256_file,
         write_json_exclusive,
@@ -137,23 +139,17 @@ def mirrored_config(command: list[str]) -> str:
 
 
 def execution_environment(tools: SumoTools) -> dict[str, str]:
-    environment = os.environ.copy()
-    tools_path = str(tools.sumo_home / "tools")
-    environment["SUMO_HOME"] = str(tools.sumo_home)
-    existing_pythonpath = environment.get("PYTHONPATH")
-    environment["PYTHONPATH"] = (
-        tools_path + os.pathsep + existing_pythonpath if existing_pythonpath else tools_path
-    )
-    return environment
+    return sumo_subprocess_environment(tools, include_pythonpath=True)
 
 
 def command_with_environment(tools: SumoTools, command: list[str]) -> list[str]:
-    return [
+    prefix = [
         "env",
         f"SUMO_HOME={tools.sumo_home}",
-        f"PYTHONPATH={tools.sumo_home / 'tools'}",
-        *command,
     ]
+    if tools.proj_data is not None:
+        prefix.append(f"PROJ_DATA={tools.proj_data}")
+    return [*prefix, f"PYTHONPATH={tools.sumo_home / 'tools'}", *command]
 
 
 def main() -> int:
@@ -283,8 +279,10 @@ def main() -> int:
             ),
             "execution_environment": {
                 "SUMO_HOME": str(tools.sumo_home),
+                "PROJ_DATA": str(tools.proj_data) if tools.proj_data else None,
                 "PYTHONPATH": str(tools.sumo_home / "tools"),
             },
+            "proj_data_source": tools.proj_data_source,
             "resolved_tools": {
                 "sumo": str(tools.sumo),
                 "netconvert": str(tools.netconvert),
@@ -292,6 +290,7 @@ def main() -> int:
                 "netcheck": str(tools.netcheck),
                 "vehicle_typemap": str(tools.vehicle_typemap),
                 "pedestrian_typemap": str(tools.pedestrian_typemap),
+                "proj_data": str(tools.proj_data) if tools.proj_data else None,
             },
             "osm_get_path": str(tools.osm_get),
             "osm_get_sha256": sha256_file(tools.osm_get),

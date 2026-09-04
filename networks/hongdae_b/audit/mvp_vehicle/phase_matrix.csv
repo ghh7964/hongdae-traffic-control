@@ -1,0 +1,13 @@
+physical_intersection,tls_id,phase_index,duration_s,state,green_links,minor_green_links,yellow_links,red_links,simultaneous_foe_pairs,green_to_red_without_yellow,audit_scope
+홍익대학교 정문 앞,2959081059,0,33.0,rrrrGGggrrrrrGGgg,"[4, 5, 13, 14]","[6, 7, 15, 16]",[],"[0, 1, 2, 3, 8, 9, 10, 11, 12]","[{""first"": 5, ""second"": 15, ""type"": ""G-g""}, {""first"": 5, ""second"": 16, ""type"": ""G-g""}, {""first"": 13, ""second"": 6, ""type"": ""G-g""}, {""first"": 14, ""second"": 6, ""type"": ""G-g""}, {""first"": 14, ""second"": 7, ""type"": ""G-g""}]",[],automatic_program_structure_only_not_actual_signal_timing
+홍익대학교 정문 앞,2959081059,1,6.0,rrrryyyyrrrrryyyy,[],[],"[4, 5, 6, 7, 13, 14, 15, 16]","[0, 1, 2, 3, 8, 9, 10, 11, 12]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍익대학교 정문 앞,2959081059,2,33.0,GGrrrrrrGGGrrrrrr,"[0, 1, 8, 9, 10]",[],[],"[2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍익대학교 정문 앞,2959081059,3,6.0,yyrrrrrryyyrrrrrr,[],[],"[0, 1, 8, 9, 10]","[2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍익대학교 정문 앞,2959081059,4,6.0,rrGGrrrrrrrGGrrrr,"[2, 3, 11, 12]",[],[],"[0, 1, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 16]","[{""first"": 2, ""second"": 11, ""type"": ""G-G""}]",[],automatic_program_structure_only_not_actual_signal_timing
+홍익대학교 정문 앞,2959081059,5,6.0,rryyrrrrrrryyrrrr,[],[],"[2, 3, 11, 12]","[0, 1, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15, 16]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,0,24.0,rrrrrrrrrrrrrrrGGGG,"[15, 16, 17, 18]",[],[],"[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,1,6.0,rrrrrrrrrrrrrrryyyy,[],[],"[15, 16, 17, 18]","[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,2,24.0,rrrrrrGGGGGGGGGrrrr,"[6, 7, 8, 9, 10, 11, 12, 13, 14]",[],[],"[0, 1, 2, 3, 4, 5, 15, 16, 17, 18]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,3,6.0,rrrrrrGyyyyyyyyrrrr,[6],[],"[7, 8, 9, 10, 11, 12, 13, 14]","[0, 1, 2, 3, 4, 5, 15, 16, 17, 18]",[],[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,4,24.0,GGGGGgGrrrrrrrrrrrr,"[0, 1, 2, 3, 4, 6]",[5],[],"[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]","[{""first"": 6, ""second"": 5, ""type"": ""G-g""}]",[],automatic_program_structure_only_not_actual_signal_timing
+홍대입구역사거리,3034197250,5,6.0,yyyyyyyrrrrrrrrrrrr,[],[],"[0, 1, 2, 3, 4, 5, 6]","[7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]",[],[],automatic_program_structure_only_not_actual_signal_timing

@@ -13,13 +13,20 @@ from scripts.network.common import (
     git_state,
     lane_allows,
     normalize_warning,
+    resolve_proj_data,
     resolve_sumo_tools,
     structural_xml_sha256,
+    sumo_subprocess_environment,
     weak_components,
 )
 
 
 class NetworkToolingUnitTests(unittest.TestCase):
+    def _make_proj_dir(self, path: Path) -> Path:
+        path.mkdir(parents=True, exist_ok=True)
+        (path / "proj.db").write_bytes(b"fixture")
+        return path
+
     def _make_sumo_tree(self, prefix: Path) -> tuple[Path, dict[str, Path]]:
         home = prefix / "share" / "sumo"
         paths = {
@@ -178,6 +185,115 @@ class NetworkToolingUnitTests(unittest.TestCase):
                     which=lambda _name: None,
                     macos_prefix=root / "missing-macos",
                 )
+
+    def test_explicit_proj_data_has_highest_priority(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            explicit = self._make_proj_dir(root / "explicit")
+            environment = self._make_proj_dir(root / "environment")
+            result = resolve_proj_data(
+                explicit,
+                environ={"PROJ_DATA": str(environment)},
+                system_candidates=[],
+                which=lambda _name: None,
+            )
+            self.assertEqual(result.path, explicit.resolve())
+            self.assertEqual(result.source, "explicit")
+
+    def test_proj_data_environment_variable(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            expected = self._make_proj_dir(Path(temporary) / "data")
+            result = resolve_proj_data(
+                environ={"PROJ_DATA": str(expected)},
+                system_candidates=[],
+                which=lambda _name: None,
+            )
+            self.assertEqual(result.path, expected.resolve())
+            self.assertEqual(result.source, "environment:PROJ_DATA")
+
+    def test_proj_lib_fallback_after_invalid_proj_data(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            expected = self._make_proj_dir(root / "lib")
+            result = resolve_proj_data(
+                environ={
+                    "PROJ_DATA": str(root / "missing"),
+                    "PROJ_LIB": str(expected),
+                },
+                system_candidates=[],
+                which=lambda _name: None,
+            )
+            self.assertEqual(result.path, expected.resolve())
+            self.assertEqual(result.source, "environment:PROJ_LIB")
+
+    def test_proj_data_inside_sumo_bundle(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            home, paths = self._make_sumo_tree(root / "install")
+            expected = self._make_proj_dir(
+                root
+                / "install"
+                / "framework"
+                / "Example.framework"
+                / "Versions"
+                / "1"
+                / "Example"
+                / "share"
+                / "proj"
+            )
+            result = resolve_proj_data(
+                environ={},
+                sumo_home=home,
+                sumo_binary=paths["sumo"],
+                system_candidates=[],
+                which=lambda _name: None,
+            )
+            self.assertEqual(result.path, expected.resolve())
+            self.assertEqual(result.source, "sumo-install")
+
+    def test_explicit_proj_data_without_database_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            empty = Path(temporary) / "empty"
+            empty.mkdir()
+            with self.assertRaisesRegex(FileNotFoundError, "does not contain proj.db"):
+                resolve_proj_data(
+                    empty,
+                    environ={},
+                    system_candidates=[],
+                    which=lambda _name: None,
+                )
+
+    def test_sumo_subprocess_environment_includes_proj_data(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            home, _paths = self._make_sumo_tree(root / "install")
+            proj_data = self._make_proj_dir(root / "proj")
+            tools = resolve_sumo_tools(
+                sumo_home=home,
+                proj_data=proj_data,
+                environ={},
+                which=lambda _name: None,
+                macos_prefix=root / "missing-macos",
+                system_proj_candidates=[],
+            )
+            environment = sumo_subprocess_environment(
+                tools, environ={"KEEP": "yes"}, include_pythonpath=True
+            )
+            self.assertEqual(environment["PROJ_DATA"], str(proj_data.resolve()))
+            self.assertEqual(environment["SUMO_HOME"], str(home.resolve()))
+            self.assertEqual(environment["PYTHONPATH"], str(home.resolve() / "tools"))
+            self.assertEqual(environment["KEEP"], "yes")
+
+    def test_invalid_proj_environment_can_be_explicitly_unavailable(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            result = resolve_proj_data(
+                environ={"PROJ_DATA": str(Path(temporary) / "missing")},
+                system_candidates=[],
+                which=lambda _name: None,
+            )
+            self.assertFalse(result.available)
+            self.assertIsNone(result.path)
+            self.assertEqual(result.source, "unavailable")
 
     def test_git_state_records_current_head_without_fixed_expectation(self) -> None:
         state = git_state(repo_root=REPO_ROOT)

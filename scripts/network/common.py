@@ -7,6 +7,7 @@ import re
 import shlex
 import shutil
 import subprocess
+import sys
 import xml.etree.ElementTree as ET
 from collections.abc import Callable, Iterable, Mapping, Sequence
 from dataclasses import dataclass
@@ -35,6 +36,157 @@ class SumoTools:
     netcheck: Path
     vehicle_typemap: Path
     pedestrian_typemap: Path
+    proj_data: Path | None
+    proj_data_source: str
+
+
+@dataclass(frozen=True)
+class ProjDataResolution:
+    path: Path | None
+    source: str
+    attempted: tuple[Path, ...]
+
+    @property
+    def available(self) -> bool:
+        return self.path is not None
+
+
+def _proj_directory(value: str | Path) -> Path:
+    path = Path(value).expanduser().resolve()
+    return path.parent if path.name == "proj.db" else path
+
+
+def _valid_proj_directory(value: str | Path) -> Path | None:
+    directory = _proj_directory(value)
+    return directory if directory.is_dir() and (directory / "proj.db").is_file() else None
+
+
+def _sumo_proj_candidates(
+    *, sumo_home: str | Path | None, sumo_binary: str | Path | None
+) -> list[Path]:
+    candidates: list[Path] = []
+    prefix: Path | None = None
+    if sumo_home is not None:
+        home = Path(sumo_home).expanduser().resolve()
+        candidates.extend([home / "share" / "proj", home / "proj", home.parent / "proj"])
+        if home.parent.name == "share":
+            prefix = home.parent.parent
+    if sumo_binary is not None:
+        binary_prefix = Path(sumo_binary).expanduser().resolve().parent.parent
+        prefix = prefix or binary_prefix
+        candidates.extend(
+            [
+                binary_prefix / "share" / "proj",
+                binary_prefix / "proj",
+                binary_prefix / "Resources" / "proj",
+            ]
+        )
+
+    # Packaged SUMO distributions may embed PROJ below a framework or app
+    # bundle rather than next to share/sumo.  Search only bounded bundle roots;
+    # never recursively walk a broad prefix such as /usr.
+    if prefix is not None:
+        for bundle_name in ("framework", "Frameworks", "Contents"):
+            bundle_root = prefix / bundle_name
+            if bundle_root.is_dir():
+                candidates.extend(path.parent for path in bundle_root.glob("**/proj.db"))
+    return candidates
+
+
+def resolve_proj_data(
+    explicit: str | Path | None = None,
+    *,
+    environ: Mapping[str, str] | None = None,
+    sumo_home: str | Path | None = None,
+    sumo_binary: str | Path | None = None,
+    system_candidates: Sequence[str | Path] | None = None,
+    which: Callable[[str], str | None] = shutil.which,
+) -> ProjDataResolution:
+    """Resolve a directory containing proj.db using portable precedence.
+
+    An invalid explicit argument is a caller error and raises immediately.
+    Invalid environment candidates are recorded and skipped so PROJ_LIB, the
+    SUMO installation, or a standard system location may still satisfy the
+    request.  Complete failure is represented explicitly as ``unavailable``.
+    """
+    environment = os.environ if environ is None else environ
+    attempted: list[Path] = []
+
+    def inspect(value: str | Path, source: str) -> ProjDataResolution | None:
+        directory = _proj_directory(value)
+        if directory not in attempted:
+            attempted.append(directory)
+        valid = _valid_proj_directory(directory)
+        if valid is None:
+            return None
+        return ProjDataResolution(valid, source, tuple(attempted))
+
+    if explicit is not None:
+        match = inspect(explicit, "explicit")
+        if match is None:
+            directory = _proj_directory(explicit)
+            raise FileNotFoundError(
+                f"Explicit PROJ data directory does not contain proj.db: {directory}"
+            )
+        return match
+
+    for variable in ("PROJ_DATA", "PROJ_LIB"):
+        value = environment.get(variable)
+        if value:
+            match = inspect(value, f"environment:{variable}")
+            if match is not None:
+                return match
+
+    for candidate in _sumo_proj_candidates(
+        sumo_home=sumo_home, sumo_binary=sumo_binary
+    ):
+        match = inspect(candidate, "sumo-install")
+        if match is not None:
+            return match
+
+    candidates = list(system_candidates) if system_candidates is not None else [
+        Path(sys.prefix) / "share" / "proj",
+        Path("/usr/share/proj"),
+        Path("/usr/local/share/proj"),
+        Path("/opt/homebrew/share/proj"),
+    ]
+    for executable in ("projinfo", "proj"):
+        hit = which(executable)
+        if hit:
+            candidates.append(Path(hit).expanduser().resolve().parent.parent / "share" / "proj")
+    for candidate in candidates:
+        match = inspect(candidate, "system")
+        if match is not None:
+            return match
+    return ProjDataResolution(None, "unavailable", tuple(attempted))
+
+
+def sumo_subprocess_environment(
+    tools: SumoTools,
+    *,
+    environ: Mapping[str, str] | None = None,
+    include_pythonpath: bool = False,
+    require_proj: bool = False,
+) -> dict[str, str]:
+    """Build one consistent environment for SUMO tools and helper scripts."""
+    environment = dict(os.environ if environ is None else environ)
+    environment["SUMO_HOME"] = str(tools.sumo_home)
+    if tools.proj_data is not None:
+        environment["PROJ_DATA"] = str(tools.proj_data)
+    else:
+        environment.pop("PROJ_DATA", None)
+        environment.pop("PROJ_LIB", None)
+        if require_proj:
+            raise RuntimeError(
+                "PROJ data unavailable; resolver did not find any directory containing proj.db"
+            )
+    if include_pythonpath:
+        tools_path = str(tools.sumo_home / "tools")
+        existing_pythonpath = environment.get("PYTHONPATH")
+        environment["PYTHONPATH"] = (
+            tools_path + os.pathsep + existing_pythonpath if existing_pythonpath else tools_path
+        )
+    return environment
 
 
 def _home_candidates(home: Path, name: str) -> list[Path]:
@@ -61,6 +213,7 @@ def _homes_from_binary(binary: Path) -> list[Path]:
 def resolve_sumo_tools(
     *,
     sumo_home: str | Path | None = None,
+    proj_data: str | Path | None = None,
     sumo: str | Path | None = None,
     netconvert: str | Path | None = None,
     osm_get: str | Path | None = None,
@@ -70,6 +223,7 @@ def resolve_sumo_tools(
     environ: Mapping[str, str] | None = None,
     which: Callable[[str], str | None] = shutil.which,
     macos_prefix: str | Path = MACOS_SUMO_PREFIX,
+    system_proj_candidates: Sequence[str | Path] | None = None,
 ) -> SumoTools:
     """Resolve one complete SUMO toolchain without assuming an operating system.
 
@@ -156,11 +310,27 @@ def resolve_sumo_tools(
         )
 
     resolved_home = selected_home or resolved["osm_get"].parent.parent
-    return SumoTools(sumo_home=resolved_home.resolve(), **resolved)
+    proj_resolution = resolve_proj_data(
+        proj_data,
+        environ=environment,
+        sumo_home=resolved_home,
+        sumo_binary=resolved["sumo"],
+        system_candidates=system_proj_candidates,
+        which=which,
+    )
+    return SumoTools(
+        sumo_home=resolved_home.resolve(),
+        proj_data=proj_resolution.path,
+        proj_data_source=proj_resolution.source,
+        **resolved,
+    )
 
 
 def add_sumo_tool_arguments(parser: Any) -> None:
     parser.add_argument("--sumo-home", type=Path, help="SUMO share/source root")
+    parser.add_argument(
+        "--proj-data", type=Path, help="Directory containing proj.db (highest priority)"
+    )
     parser.add_argument("--sumo", type=Path, help="Explicit sumo binary")
     parser.add_argument("--netconvert", type=Path, help="Explicit netconvert binary")
     parser.add_argument("--osm-get", type=Path, help="Explicit osmGet.py")
@@ -172,6 +342,7 @@ def add_sumo_tool_arguments(parser: Any) -> None:
 def sumo_tools_from_args(args: Any) -> SumoTools:
     return resolve_sumo_tools(
         sumo_home=args.sumo_home,
+        proj_data=args.proj_data,
         sumo=args.sumo,
         netconvert=args.netconvert,
         osm_get=args.osm_get,

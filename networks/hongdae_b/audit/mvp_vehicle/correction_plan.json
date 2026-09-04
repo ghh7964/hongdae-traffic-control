@@ -1,0 +1,183 @@
+{
+  "scope": "vehicle corrections proposed only; no corrected network generated",
+  "evidence_policy": "unresolved movements remain unchanged pending dated evidence",
+  "corrections": [
+    {
+      "correction_id": "MV-PROJ-001",
+      "target": "audit/build execution environment",
+      "current_auto_state": "Network metadata uses UTM zone 52; tools emit proj.db lookup warnings without PROJ_DATA.",
+      "problem": "Unconfigured resource lookup obscures whether a future transform failure is environmental or spatial.",
+      "evidence": "Bundled proj.db plus official inverse transform reproduces both raw OSM nodes within 0.006 m.",
+      "proposed_change": "Set PROJ_DATA to the versioned SUMO bundle share/proj directory in the reproducible audit/build wrapper.",
+      "priority": "필수",
+      "affected_controlled_links": [],
+      "post_change_tests": [
+        "inverse-transform fixture",
+        "netconvert/net reload without pj_obj_create warning"
+      ],
+      "derivation_method": "reproducible correction/audit script environment; no network XML edit",
+      "target_junction_edge_lane_connection": "audit/build execution environment"
+    },
+    {
+      "correction_id": "MV-GATE-LANE-001",
+      "target": "junction 2959081059; edge 299767124#4 lane 0; link 15 and sibling links 13,14,16",
+      "current_auto_state": "One passenger lane fans to right/straight/left/U-turn; left link 15 receives permissive g at 27.78 m/s.",
+      "problem": "Geometry and SUMO dir both identify a left turn. The sole passenger source lane is shared by all four movements; raw way/299767124 has neither lanes nor turn:lanes nor maxspeed. Netconvert therefore applies 27.78 m/s and serves link 15 as minor green g with conflicting protected movements. Current data cannot establish the physical lane layout, so the connection itself is not classified as erroneous.",
+      "evidence": "Generated connection/phase, netconvert warning, raw way/299767124 tag absence, geometry.",
+      "proposed_change": "First verify lane arrows/count and legal speed. If confirmed, encode lane count/speed and explicit lane-to-lane connections in a plain edge/connection patch or deterministic script; otherwise retain and mark unresolved.",
+      "priority": "필수",
+      "affected_controlled_links": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "post_change_tests": [
+        "controlled-link snapshot",
+        "lane reachability",
+        "minor-green warning regression",
+        "seven-route smoke test"
+      ],
+      "derivation_method": "plain XML edge/connection patch or reproducible correction script",
+      "target_junction_edge_lane_connection": "junction 2959081059; edge 299767124#4 lane 0; link 15 and sibling links 13,14,16"
+    },
+    {
+      "correction_id": "MV-ADJ-LANE-001",
+      "target": "junction 11059771900; edge 254749392 lane 2; links 9,10,11",
+      "current_auto_state": "Lane 2 serves straight/left/U-turn; left link 10 receives permissive g at 27.78 m/s.",
+      "problem": "The geometrically valid left turn is generated from lane 2, which also serves straight and U-turn movements. Raw way/254749392 states lanes=6 but has no turn:lanes or maxspeed; the generated approach speed is 27.78 m/s and link 10 is permissive g. This is adjacent to, not controlled by, station TLS 3034197250. Physical lane exclusivity and legality remain unresolved; no evidence currently supports deleting the connection.",
+      "evidence": "Generated connection/phase, netconvert warning, raw lanes=6 with turn:lanes/maxspeed absent, geometry.",
+      "proposed_change": "Verify physical lane arrows, legal speed, and U-turn rule; then encode only confirmed speed/lane/connection facts in a plain patch or deterministic script.",
+      "priority": "권장",
+      "affected_controlled_links": [
+        "11059771900:9",
+        "11059771900:10",
+        "11059771900:11"
+      ],
+      "post_change_tests": [
+        "east-side and World Cup route smoke",
+        "minor-green warning regression",
+        "lane reachability"
+      ],
+      "derivation_method": "plain XML edge/connection patch or reproducible correction script",
+      "target_junction_edge_lane_connection": "junction 11059771900; edge 254749392 lane 2; links 9,10,11"
+    },
+    {
+      "correction_id": "MV-UTURN-GATE-001",
+      "target": "junction 2959081059 U-turn links 3,7,12,16",
+      "current_auto_state": "Four generated U-turns; one service-road approach is not passenger-usable.",
+      "problem": "No raw OSM tag/restriction or external sign/marking evidence establishes permission or prohibition.",
+      "evidence": "Generated dir=t and geometry only; tag absence is not permission.",
+      "proposed_change": "Make no topology change until dated field/street-view evidence is captured; then add explicit plain connection deletions/retentions in a reviewed patch.",
+      "priority": "보류",
+      "affected_controlled_links": [
+        3,
+        7,
+        12,
+        16
+      ],
+      "post_change_tests": [
+        "link-index/phase remap",
+        "all gate movements route test",
+        "foe/conflict audit"
+      ],
+      "derivation_method": "plain XML connection/tll patch with evidence manifest",
+      "target_junction_edge_lane_connection": "junction 2959081059 U-turn links 3,7,12,16"
+    },
+    {
+      "correction_id": "MV-UTURN-STATION-001",
+      "target": "junction 3034197250 U-turn links 5,18",
+      "current_auto_state": "Two generated U-turns; link 5 is permissive g with link 6 protected G.",
+      "problem": "No raw OSM tag/restriction or external sign/marking evidence establishes permission or prohibition.",
+      "evidence": "Generated dir=t, phase/foe matrix, and geometry only.",
+      "proposed_change": "Make no topology change until dated field/street-view evidence is captured; then patch connection/tll definitions reproducibly.",
+      "priority": "보류",
+      "affected_controlled_links": [
+        5,
+        18
+      ],
+      "post_change_tests": [
+        "link-index/phase remap",
+        "all station movements route test",
+        "foe/conflict audit"
+      ],
+      "derivation_method": "plain XML connection/tll patch with evidence manifest",
+      "target_junction_edge_lane_connection": "junction 3034197250 U-turn links 5,18"
+    },
+    {
+      "correction_id": "MV-TLS-STRUCT-001",
+      "target": "junction 2959081059 phase 4; links 2 and 11",
+      "current_auto_state": "SUMO request matrix marks the pair as foes while both are uppercase G.",
+      "problem": "Potential protected-green conflict in an irregular junction; link 2 is delivery/bicycle-only but remains controlled traffic.",
+      "evidence": "Parsed request foes bitsets and auto phase state rrGGrrrrrrrGGrrrr.",
+      "proposed_change": "Before any operational use, validate internal paths/vehicle classes and generate a reviewed tll patch. Do not treat the six-phase auto program as real timing.",
+      "priority": "필수",
+      "affected_controlled_links": [
+        2,
+        11
+      ],
+      "post_change_tests": [
+        "foe-pair phase assertion",
+        "green-yellow transition test",
+        "SUMO collision smoke with relevant vehicle classes"
+      ],
+      "derivation_method": "plain XML tll patch or netconvert tll additional input",
+      "target_junction_edge_lane_connection": "junction 2959081059 phase 4; links 2 and 11"
+    },
+    {
+      "correction_id": "MV-STATION-GEOM-001",
+      "target": "junction 3034197250 approaches ±218976035#0 and ±254749392",
+      "current_auto_state": "Several normal approach/departure lanes are only 0.20 m after junction-shape subtraction.",
+      "problem": "Routes connect, but the near-zero storage length can distort queues and lane changes in later traffic experiments.",
+      "evidence": "Generated lane lengths and successful structural smoke test.",
+      "proposed_change": "Inspect plain-node junction shapes and adjacent split nodes; if queue storage is materially wrong, apply an explicit node-shape/edge patch rather than editing auto.net.xml.",
+      "priority": "권장",
+      "affected_controlled_links": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "post_change_tests": [
+        "lane-length threshold",
+        "route smoke",
+        "queue storage sanity test",
+        "controlled-link snapshot"
+      ],
+      "derivation_method": "plain XML node/edge patch or explicit NetEdit change log",
+      "target_junction_edge_lane_connection": "junction 3034197250 approaches ±218976035#0 and ±254749392"
+    },
+    {
+      "correction_id": "MV-SPEED-001",
+      "target": "MVP and adjacent primary/secondary/tertiary approaches lacking maxspeed",
+      "current_auto_state": "Typemap defaults include 27.78 m/s secondary and 22.22 m/s tertiary speeds.",
+      "problem": "Raw OSM does not establish these as physical/legal intersection speeds; they contribute directly to minor-green warnings.",
+      "evidence": "Raw maxspeed absence and generated lane speed attributes.",
+      "proposed_change": "Obtain authoritative/dated speed evidence, then apply a deterministic plain edge speed patch. Do not guess a Seoul-wide value.",
+      "priority": "필수",
+      "affected_controlled_links": "all 36 MVP connections plus adjacent warning links",
+      "post_change_tests": [
+        "speed provenance check",
+        "minor-green warning regression",
+        "route smoke"
+      ],
+      "derivation_method": "plain XML edge patch or reproducible correction script",
+      "target_junction_edge_lane_connection": "MVP and adjacent primary/secondary/tertiary approaches lacking maxspeed"
+    }
+  ]
+}
